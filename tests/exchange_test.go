@@ -32,16 +32,3 @@ func TestURLShortener_HappyPath(t *testing.T) {
 		JSON().Object().
 		ContainsKey("exchanges")
 }
-
-//func testRedirect(t *testing.T, alias string, urlToRedirect string) {
-//	u := url.URL{
-//		Scheme: "http",
-//		Host:   host,
-//		Path:   alias,
-//	}
-//
-//	redirectedToURL, err := api.GetRedirect(u.String())
-//	require.NoError(t, err)
-//
-//	require.Equal(t, urlToRedirect, redirectedToURL)
-//}
