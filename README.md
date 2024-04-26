@@ -14,7 +14,7 @@
 ## Установка
 1. Клонируйте репозиторий
 ```bash
-git clone github.com/lirprocs/moneyExchange.git
+git clone https://github.com/lirprocs/moneyExchange.git
 ```
 2. Перейдите в директорию проекта:
 ```bash
