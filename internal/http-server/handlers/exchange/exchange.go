@@ -4,13 +4,14 @@ import (
 	"fmt"
 	"github.com/go-chi/chi/v5/middleware"
 	"github.com/go-chi/render"
+	"github.com/go-playground/validator/v10"
 	"log/slog"
 	"net/http"
 )
 
 type Request struct {
-	Amount    int   `json:"amount"`
-	Banknotes []int `json:"banknotes"`
+	Amount    int   `json:"amount" validate:"required"`
+	Banknotes []int `json:"banknotes" validate:"required"`
 }
 
 type Response struct {
@@ -37,12 +38,17 @@ func New(log *slog.Logger) http.HandlerFunc {
 		}
 		log.Info("request body decoded", slog.Any("request", req))
 
+		if err := validator.New().Struct(req); err != nil {
+			http.Error(w, "missing a required field", http.StatusBadRequest)
+			return
+		}
+
 		var exchange [][]int
 		calculateExchange(req.Amount, req.Banknotes, []int{}, &exchange)
 
 		log.Info("The count has been completed")
 		render.JSON(w, r, Response{Exchanges: exchange})
-		log.Info("", exchange)
+		//log.Info("", exchange)
 	}
 }
 

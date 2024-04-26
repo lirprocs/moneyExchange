@@ -24,7 +24,7 @@ func main() {
 	cfg := config.MustLoad()
 
 	log := setupLogger(cfg.Env)
-	log.Info("Starting server")
+	log.Info("starting server")
 
 	router := chi.NewRouter()
 
