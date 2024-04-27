@@ -39,6 +39,7 @@ go run cmd/main.go --config ./config/local.yaml
 localhost:8088/exchange 
 ```
 (Можно использовать Postman)
+
 4. Для остановки сервера можно использовать комбинацию клавиш `Ctrl + C` в окне терминала, из которого был запущен сервер. (В проекте реализован graceful shutdown)
 
 ## Примичание
